@@ -14,82 +14,73 @@ import jakarta.validation.constraints.NotEmpty;
 @Entity
 public class Vaga implements Serializable {
 
-    //faz o controle do versionamento,
     private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long codigo;
+	
+	@NotEmpty
+	private String nome;
+	
+	@NotEmpty
+	private String descricao;
+	
+	@NotEmpty
+	private String data;
+	
+	@NotEmpty
+	private String salario;
+	
+	@OneToMany(mappedBy = "vaga", cascade = CascadeType.REMOVE)
+	private List<Candidato> candidatos;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO) //vai gerar automaticamente toda vez q criar uma vaga
-    private long codigo;
+	public long getCodigo() {
+		return codigo;
+	}
 
-    //n aceita vazio
-    @NotEmpty
-    private String nome;
+	public void setCodigo(long codigo) {
+		this.codigo = codigo;
+	}
 
-    //n aceita vazio
-    @NotEmpty
-    private String descricao;
+	public String getNome() {
+		return nome;
+	}
 
-    //n aceita vazio
-    @NotEmpty 
-    private String data;
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
-    //n aceita vazio
-    @NotEmpty
-    private String salario;
+	public String getDescricao() {
+		return descricao;
+	}
 
-    //quando deletar a vaga, vai deletar os candidatos tbm
-    @OneToMany(mappedBy = "vaga",cascade = CascadeType.REMOVE)
-    private List<Candidato> candidatos;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
 
+	public String getData() {
+		return data;
+	}
 
-    public long getCodigo() {
-        return codigo;
-    }
+	public void setData(String data) {
+		this.data = data;
+	}
 
-    public void setCodigo(long codigo) {
-        this.codigo = codigo;
-    }
+	public String getSalario() {
+		return salario;
+	}
 
-    public String getNome() {
-        return nome;
-    }
+	public void setSalario(String salario) {
+		this.salario = salario;
+	}
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+	public List<Candidato> getCandidatos() {
+		return candidatos;
+	}
 
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public String getData() {
-        return data;
-    }
-
-    public void setData(String data) {
-        this.data = data;
-    }
-
-    public String getSalario() {
-        return salario;
-    }
-
-    public void setSalario(String salario) {
-        this.salario = salario;
-    }
-
-    public List<Candidato> getCandidatos() {
-        return candidatos;
-    }
-
-    public void setCandidatos(List<Candidato> candidatos) {
-        this.candidatos = candidatos;
-    }
-
-    
+	public void setCandidatos(List<Candidato> candidatos) {
+		this.candidatos = candidatos;
+	}
 
 }
