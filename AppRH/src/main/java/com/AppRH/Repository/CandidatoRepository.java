@@ -12,7 +12,7 @@ public interface CandidatoRepository extends CrudRepository<Candidato, String> {
 
     // muito importante manter a escrita assim , pois e padrão de projeto
     Iterable<Candidato>findByVaga(Vaga vaga);
-    Candidato findByRg(String rg);
+    Candidato findByRg(java.lang.String string);
     Candidato findById(long id);
     List<Candidato>findByNomeCandidato(String nomeCandidato);
 }
