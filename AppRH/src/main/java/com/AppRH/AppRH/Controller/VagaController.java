@@ -18,15 +18,14 @@ import jakarta.validation.Valid;
 
 @Controller
 public class VagaController {
+
+	@Autowired
+	private VagaRepository vr;
+	
+	@Autowired
+	private CandidatoRepository cr;
     
-
-    @Autowired
-    private VagaRepository vr;
-
-    @Autowired
-    private CandidatoRepository cr;
-
-    // CADASTRA VAGA
+	// CADASTRA VAGA
 	@RequestMapping(value = "/cadastrarVaga", method = RequestMethod.GET)
 	public String form() {
 		return "vaga/formVaga";
@@ -133,5 +132,6 @@ public class VagaController {
 		String codigo = "" + codigoLong;
 		return "redirect:/" + codigo;
 	}
+
 
 }
