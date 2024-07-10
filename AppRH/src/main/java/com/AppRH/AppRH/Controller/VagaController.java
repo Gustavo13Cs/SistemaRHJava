@@ -93,6 +93,35 @@ public class VagaController {
     }
 
     //DELETA CANDIDATO PELO RG
+    @RequestMapping("/deletarCandidato")
+    public String deletarCandidato(String rg) {
+        Candidato candidato = cr.findByRg(rg);
+        Vaga vaga = candidato.getVaga();
+        String codigo = "" + vaga.getCodigo();
 
+        cr.delete(candidato);
+        return "redirect:/" + codigo;
+    }
+
+    //METODOS QUE ATUALIZAM A VAGA
+
+    //Formulario edição de vaga 
+    @RequestMapping(value = "editar-vaga", method = RequestMethod.GET)
+    public ModelAndView editarVaga(long codigo) {
+        Vaga vaga = vr.findByCodigo(codigo);
+        ModelAndView mv = new ModelAndView("vaga/upadata-vaga");
+        mv.addObject("vaga", vaga);
+        return mv;
+
+    }
+    //UPDATE VAGA
+    @RequestMapping(value = "editar-vaga", method = RequestMethod.POST)
+    public String updateVaga(@Valid Vaga vaga,BindingResult result, RedirectAttributes attributes) {
+        vr.save(vaga);
+        attributes.addFlashAttribute("sucess","Vaga Alterada com Sucesso");
+        long codigoLong = vaga.getCodigo();
+        String codigo = "" + codigoLong;
+        return "redirect:/" + codigo;
+    }
 
 }
