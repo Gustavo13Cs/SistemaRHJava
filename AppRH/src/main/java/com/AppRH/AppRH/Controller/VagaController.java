@@ -20,10 +20,7 @@ import com.AppRH.repository.VagaRepository;
 @Controller
 public class VagaController {
 
-	@Autowired
 	private VagaRepository vr;
-	
-	@Autowired
 	private CandidatoRepository cr;
     
 	// CADASTRA VAGA
