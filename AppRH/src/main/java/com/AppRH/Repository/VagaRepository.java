@@ -1,4 +1,4 @@
-package com.AppRH.Repository;
+package com.AppRH.repository;
 
 import java.util.List;
 
