@@ -1,10 +1,8 @@
 package com.AppRH.AppRH.Controller;
 
-
 import jakarta.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,16 +19,8 @@ import com.AppRH.repository.VagaRepository;
 @Controller
 public class VagaController {
 
-	@Autowired
 	private VagaRepository vr;
-
-	@Autowired
 	private CandidatoRepository cr;
-    
-	public VagaController(VagaRepository vr, CandidatoRepository cr) {
-		this.vr = vr;
-		this.cr = cr;
-	}
 
 	// CADASTRA VAGA
 	@RequestMapping(value = "/cadastrarVaga", method = RequestMethod.GET)
@@ -53,7 +43,7 @@ public class VagaController {
 
 	// LISTA VAGAS
 
-	@RequestMapping(value = "/vagas")
+	@RequestMapping("/vagas")
 	public ModelAndView listaVagas() {
 		ModelAndView mv = new ModelAndView("vaga/listaVaga");
 		Iterable<Vaga> vagas = vr.findAll();
@@ -139,6 +129,5 @@ public class VagaController {
 		String codigo = "" + codigoLong;
 		return "redirect:/" + codigo;
 	}
-
 
 }
