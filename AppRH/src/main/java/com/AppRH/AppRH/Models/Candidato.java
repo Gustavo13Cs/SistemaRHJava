@@ -13,7 +13,7 @@ public class Candidato {
 	
 	@Id
 	@GeneratedValue
-	private long id;
+	private Long id;
 	
 	@Column(unique = true)
 	private String rg;
