@@ -10,8 +10,8 @@ import jakarta.validation.constraints.NotEmpty;
 
 @Entity
 public class Candidato {
-
-    @Id
+	
+	@Id
 	@GeneratedValue
 	private long id;
 	
@@ -59,5 +59,4 @@ public class Candidato {
 		this.vaga = vaga;
 	}
 
-    
 }

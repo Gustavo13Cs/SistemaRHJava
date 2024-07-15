@@ -10,11 +10,10 @@ import com.AppRH.AppRH.Models.Vaga;
 
 @Repository
 public interface CandidatoRepository extends CrudRepository<Candidato, String> {
-
-    // muito importante manter a escrita assim , pois e padrão de projeto
-    Iterable<Candidato>findByVaga(Vaga vaga);
 	
-	Candidato findByRg(java.lang.String string);
+	Iterable<Candidato>findByVaga(Vaga vaga);
+	
+	Candidato findByRg(String rg);
 	
 	Candidato findById(long id);
 	

@@ -14,7 +14,7 @@ import jakarta.validation.constraints.NotEmpty;
 @Entity
 public class Vaga implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
