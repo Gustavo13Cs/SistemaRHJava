@@ -8,51 +8,51 @@ import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Dependentes {
-
+    
     @Id
 	@GeneratedValue
-	private Long Id;
+	private Long id;
+	
+	@Column(unique = true)
+	private String cpf;
+	
+	private String nome;
+	private  String datanascimento;
+	
+	@ManyToOne
+	private Funcionario funcionario;
 
-    @Column(unique = true)
-    private String cpf;
+	public String getCpf() {
+		return cpf;
+	}
 
-    private String nome;
-    private String datanascimento;
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
 
-    @ManyToOne
-    private Funcionario funcionario;
+	public String getNome() {
+		return nome;
+	}
 
-    public String getCpf() {
-        return cpf;
-    }
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
+	public String getDatanascimento() {
+		return datanascimento;
+	}
 
-    public String getNome() {
-        return nome;
-    }
+	public void setDatanascimento(String datanascimento) {
+		this.datanascimento = datanascimento;
+	}
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+	public Funcionario getFuncionario() {
+		return funcionario;
+	}
 
-    public String getDatanascimento() {
-        return datanascimento;
-    }
-
-    public void setDatanascimento(String datanascimento) {
-        this.datanascimento = datanascimento;
-    }
-
-    public Funcionario getFuncionario() {
-        return funcionario;
-    }
-
-    public void setFuncionario(Funcionario funcionario) {
-        this.funcionario = funcionario;
-    }
-
-    
+	public void setFuncionario(Funcionario funcionario) {
+		this.funcionario = funcionario;
+	}
+	
+	
 }

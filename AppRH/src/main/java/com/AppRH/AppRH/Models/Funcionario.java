@@ -13,56 +13,57 @@ import jakarta.persistence.OneToMany;
 @Entity
 public class Funcionario implements Serializable {
 
-    private static final long serialVersionUID = 1;
-
-    @Id
+    private static final long serialVersionUID = 1L;
+	
+	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long codigo;
+	private Long id;
+	
+	private String nome;
+	private String data;
+	private String email;
+	
+	@OneToMany(mappedBy = "funcionario", cascade = CascadeType.REMOVE)
+	private List<Dependentes>dependentes;
 
-    private String nome;
-    private String data;
-    private String email;
+	public long getId() {
+		return id;
+	}
 
-    @OneToMany(mappedBy = "funcionario", cascade = CascadeType.REMOVE)
-    private List<Dependentes> dependentes;
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public Long getCodigo() {
-        return codigo;
-    }
+	public String getNome() {
+		return nome;
+	}
 
-    public void setCodigo(Long codigo) {
-        this.codigo = codigo;
-    }
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
-    public String getNome() {
-        return nome;
-    }
+	public String getData() {
+		return data;
+	}
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+	public void setData(String data) {
+		this.data = data;
+	}
 
-    public String getData() {
-        return data;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    public void setData(String data) {
-        this.data = data;
-    }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public String getEmail() {
-        return email;
-    }
+	public List<Dependentes> getDependentes() {
+		return dependentes;
+	}
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public List<Dependentes> getDependentes() {
-        return dependentes;
-    }
-
-    public void setDependentes(List<Dependentes> dependentes) {
-        this.dependentes = dependentes;
-    }
+	public void setDependentes(List<Dependentes> dependentes) {
+		this.dependentes = dependentes;
+	}
+	
 }
