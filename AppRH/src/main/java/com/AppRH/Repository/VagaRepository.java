@@ -15,6 +15,6 @@ public interface VagaRepository extends CrudRepository<Vaga, String> {
 
 	// para a busca
 	@Query(value = "select u from Vaga u where u.nome like %?1%")
-	List<Vaga>findByVaga(String nome);
+	List<Vaga>findByNomesVaga(String nome);
 }
 
