@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.AppRH.AppRH.Models.Vaga;
 
 @Repository
-public interface VagaRepository extends CrudRepository<Vaga, String> {
+public interface VagaRepository extends CrudRepository<Vaga, Long> {
 	Vaga findByCodigo(long codigo);
 	List<Vaga> findByNome(String nome);
 

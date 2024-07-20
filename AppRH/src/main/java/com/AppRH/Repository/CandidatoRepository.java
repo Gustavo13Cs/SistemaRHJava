@@ -10,7 +10,7 @@ import com.AppRH.AppRH.Models.Candidato;
 import com.AppRH.AppRH.Models.Vaga;
 
 @Repository
-public interface CandidatoRepository extends CrudRepository<Candidato, String> {
+public interface CandidatoRepository extends CrudRepository<Candidato, Long> {
 	
 	Iterable<Candidato>findByVaga(Vaga vaga);
 	

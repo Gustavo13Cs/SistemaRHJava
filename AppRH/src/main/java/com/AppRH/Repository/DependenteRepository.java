@@ -10,7 +10,7 @@ import com.AppRH.AppRH.Models.Dependente;
 import com.AppRH.AppRH.Models.Funcionario;
 
 @Repository
-public interface DependenteRepository extends CrudRepository<Dependente, String> {
+public interface DependenteRepository extends CrudRepository<Dependente, Long> {
 
     Iterable<Dependente> findByFuncionario(Funcionario funcionario);
 
