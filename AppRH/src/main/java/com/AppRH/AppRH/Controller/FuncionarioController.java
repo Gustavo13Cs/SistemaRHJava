@@ -30,7 +30,7 @@ public class FuncionarioController {
 	// chamo o form de casdatrar funcionários
 	@RequestMapping(value = "/cadastrarFuncionario", method = RequestMethod.GET)
 	public String form() {
-		return "funcionario/formFuncionario";
+		return "funcionario/form-funcionario";
 	}
 
 	// cadastra funcionários
@@ -50,7 +50,7 @@ public class FuncionarioController {
     //listar funcionario
     @RequestMapping("/funcionarios")
     public ModelAndView listaFuncionario(){
-        ModelAndView mv = new ModelAndView("funcionario/listaFuncionario");
+        ModelAndView mv = new ModelAndView("funcionario/lista-funcionario");
 
         Iterable<Funcionario> funcionarios = fr.findAll();
         mv.addObject("funcionarios", funcionarios);

@@ -28,7 +28,7 @@ public class VagaController {
 	// CADASTRA VAGA
 	@RequestMapping(value = "/cadastrarVaga", method = RequestMethod.GET)
 	public String form() {
-		return "vaga/formVaga";
+		return "vaga/form-vaga";
 	}
 
 	@RequestMapping(value = "/cadastrarVaga", method = RequestMethod.POST)
@@ -48,7 +48,7 @@ public class VagaController {
 
 	@RequestMapping("/vagas")
 	public ModelAndView listaVagas() {
-		ModelAndView mv = new ModelAndView("vaga/listaVaga");
+		ModelAndView mv = new ModelAndView("vaga/lista-vaga");
 		Iterable<Vaga> vagas = vr.findAll();
 		mv.addObject("vagas", vagas);
 		return mv;
@@ -58,7 +58,7 @@ public class VagaController {
 	@RequestMapping(value = "/{codigo}", method = RequestMethod.GET)
 	public ModelAndView detalhesVaga(@PathVariable("codigo") long codigo) {
 		Vaga vaga = vr.findByCodigo(codigo);
-		ModelAndView mv = new ModelAndView("vaga/detalhesVaga");
+		ModelAndView mv = new ModelAndView("vaga/detalhes-vaga");
 		mv.addObject("vaga", vaga);
 
 		Iterable<Candidato> canditados = cr.findByVaga(vaga);
