@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.AppRH.AppRH.Models.Dependentes;
+import com.AppRH.AppRH.Models.Dependente;
 import com.AppRH.AppRH.Models.Funcionario;
-import com.AppRH.repository.DependentesRepository;
+import com.AppRH.repository.DependenteRepository;
 import com.AppRH.repository.FuncionarioRepository;
 
 
@@ -25,7 +25,7 @@ public class FuncionarioController {
 	private FuncionarioRepository fr;
 
 	@Autowired
-	private DependentesRepository dr;
+	private DependenteRepository dr;
 
 	// chamo o form de casdatrar funcionários
 	@RequestMapping(value = "/cadastrarFuncionario", method = RequestMethod.GET)
@@ -65,14 +65,14 @@ public class FuncionarioController {
         mv.addObject("funcionarios",funcionario);
 
         //lista de dependentes baseado no funcionario
-        Iterable<Dependentes> dependentes = dr.findByFuncionario(funcionario);
+        Iterable<Dependente> dependentes = dr.findByFuncionario(funcionario);
         mv.addObject("dependentes", dependentes);
         return mv;
     }
 
     //Adicionar dependentes
     @RequestMapping(value = "/dependentes/{id}", method = RequestMethod.POST)
-    public String dependentesPost(@PathVariable("id") long id,Dependentes dependentes, 
+    public String dependentesPost(@PathVariable("id") long id,Dependente dependentes, 
     BindingResult result, RedirectAttributes attributes) {
 
         if (result.hasErrors()) {
@@ -126,7 +126,7 @@ public class FuncionarioController {
     //deletar dependente
     @RequestMapping("/deletarDependente")
     public String deletarDependente(String cpf) {
-        Dependentes dependentes = dr.findByCpf(cpf);
+        Dependente dependentes = dr.findByCpf(cpf);
 
         Funcionario funcionario = dependentes.getFuncionario();
         // pra voltar pra mesma pagina depois de deletar

@@ -16,7 +16,7 @@ public class Funcionario implements Serializable {
     private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	private String nome;
@@ -24,7 +24,7 @@ public class Funcionario implements Serializable {
 	private String email;
 	
 	@OneToMany(mappedBy = "funcionario", cascade = CascadeType.REMOVE)
-	private List<Dependentes>dependentes;
+	private List<Dependente>dependentes;
 
 	public long getId() {
 		return id;
@@ -58,11 +58,11 @@ public class Funcionario implements Serializable {
 		this.email = email;
 	}
 
-	public List<Dependentes> getDependentes() {
+	public List<Dependente> getDependentes() {
 		return dependentes;
 	}
 
-	public void setDependentes(List<Dependentes> dependentes) {
+	public void setDependentes(List<Dependente> dependentes) {
 		this.dependentes = dependentes;
 	}
 	
